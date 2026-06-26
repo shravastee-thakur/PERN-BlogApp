@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "./middlewares/errorMiddleware";
-// import { authRouter } from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -19,7 +19,7 @@ app.use(
 );
 app.use(cookieParser());
 
-// app.use("/api/auth", authRouter);
+app.use("/api/auth", userRoutes);
 // http://localhost:5000/api/auth/register
 // app.use("/api/blog", );
 // http://localhost:5000/api/notes/

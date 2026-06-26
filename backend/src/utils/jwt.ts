@@ -5,7 +5,6 @@ dotenv.config();
 
 export interface TokenPayload {
   id: string;
-  role: "admin" | "user";
 }
 
 const accessSecret = process.env.ACCESS_SECRET;
