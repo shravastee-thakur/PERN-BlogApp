@@ -21,12 +21,15 @@ export const userSchema = createInsertSchema(users, {
       .min(3, "Name must be at least 3 characters")
       .max(50, "Name must be at most 50 characters"),
 
-  email: (schema) => schema.email("Invalid email address"),
+  email: (schema) =>
+    schema
+      .email("Invalid email address")
+      .transform((val) => val.trim().toLowerCase()),
 
   password: (schema) =>
     schema
-      .min(6, "Password must be at least 6 characters")
-      .max(14, "Password must be at most 14 characters"),
+      .min(8, "Password must be at least 8 characters")
+      .max(128, "Password must be at most 128 characters"),
 });
 
 export const registerUserSchema = userSchema.pick({

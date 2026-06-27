@@ -5,6 +5,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "./middlewares/errorMiddleware";
 import userRoutes from "./routes/userRoutes";
+import postRoutes from "./routes/postRoutes";
+import commentRoutes from "./routes/commentRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -20,9 +22,13 @@ app.use(
 app.use(cookieParser());
 
 app.use("/api/auth", userRoutes);
-// http://localhost:5000/api/auth/register
-// app.use("/api/blog", );
-// http://localhost:5000/api/notes/
+// http://localhost:3000/api/auth/register
+
+app.use("/api/post", postRoutes);
+// http://localhost:3000/api/post/
+
+app.use("/api/comment", commentRoutes);
+// http://localhost:3000/api/comment/
 
 app.use(errorHandler);
 
